@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+source .toolchain/index.sh
+
+dependency $*
