@@ -2,33 +2,41 @@ package io.blockmason.link;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import io.blockmason.link.oauth2.Credential;
+import io.blockmason.link.oauth2.Session;
 import java.io.IOException;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 
 public class ProjectTest {
-  private static String getClientID() {
-    return System.getenv().get("LINK_CLIENT_ID");
-  }
+  static class MockSession extends Session {
+    public MockSession() {
+      super(new Credential());
+    }
 
-  private static String getClientSecret() {
-    return System.getenv().get("LINK_CLIENT_SECRET");
+    @Override
+    public Session refresh() {
+      return this;
+    }
+
+    @Override
+    public String send(final String method, final String path, final String requestJSON) throws IOException {
+      return "{\"message\":\"Hello, world!\"}";
+    }
   }
 
   @Test
   public void happyPath() throws IOException {
-    Project market = Project.at(getClientID(), getClientSecret());
+    Session session = new MockSession();
+    Project project = new Project(session);
+    String message = "Hello, world!";
 
     JSONObject inputs = new JSONObject();
 
-    inputs.put("item", "cheese");
+    inputs.put("message", message);
 
-    JSONObject price = market.get("/getPrice", inputs);
+    JSONObject outputs = project.get("/echo", inputs);
 
-    assertEquals(0, price.getInt("latest"));
-    assertEquals(0, price.getInt("mean"));
-    assertEquals(0, price.getInt("median"));
-    assertEquals(0, price.getInt("minimum"));
-    assertEquals(0, price.getInt("maximum"));
+    assertEquals(message, outputs.getString("message"));
   }
 }

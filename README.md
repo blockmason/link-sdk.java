@@ -61,9 +61,9 @@ project.post("/mint", inputs);
 
 ### Building
 
-Clone this repo, then run `make` to install dependencies, compile the
-sources and tests, run the tests, and create a package archive for
-distribution or inclusion in another project.
+Clone this repo, then run `./gradlew build`. For more information about
+building Gradle projects, see [Building Java Libraries with Gradle][3].
 
 [1]: https://circleci.com/gh/blockmason/link-sdk.java.svg?style=svg
 [2]: https://circleci.com/gh/blockmason/link-sdk.java
+[3]: https://guides.gradle.org/building-java-libraries/
