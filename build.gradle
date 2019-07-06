@@ -1,5 +1,33 @@
 plugins {
   id 'java-library'
+  id 'maven-publish'
+  id 'signing'
+}
+
+task sourcesJar(type: Jar) {
+  archiveClassifier = 'sources'
+  from sourceSets.main.allJava
+}
+
+task javadocJar(type: Jar) {
+  archiveClassifier = 'javadoc'
+  from javadoc.destinationDir
+}
+
+publishing {
+  publications {
+    mavenJava(MavenPublication) {
+      from components.java
+      artifact sourcesJar
+      artifact javadocJar
+    }
+  }
+}
+
+signing {
+  def signingKey = findProperty('SIGNING_KEY')
+  useInMemoryPgpKeys(signingKey, '')
+  sign publishing.publications.mavenJava
 }
 
 version = '0.1.0'
