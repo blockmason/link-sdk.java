@@ -64,6 +64,16 @@ project.post("/mint", inputs);
 Clone this repo, then run `./gradlew build`. For more information about
 building Gradle projects, see [Building Java Libraries with Gradle][3].
 
+### Publishing
+
+Set the `ORG_GRADLE_PROJECT_SIGNING_KEY` environment variable to the
+ASCII-armored PGP private key, then run `./gradlew publish`. The
+following one-liner will publish using the key ID `ABCD1234`:
+
+```
+ORG_GRADLE_PROJECT_SIGNING_KEY="$(gpg --export-secret-key --armor ABCD1234)" ./gradlew publish
+```
+
 [1]: https://circleci.com/gh/blockmason/link-sdk.java.svg?style=svg
 [2]: https://circleci.com/gh/blockmason/link-sdk.java
 [3]: https://guides.gradle.org/building-java-libraries/

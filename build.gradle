@@ -62,8 +62,7 @@ publishing {
 }
 
 signing {
-  def signingKey = findProperty('SIGNING_KEY')
-  useInMemoryPgpKeys(signingKey, '')
+  useInMemoryPgpKeys(findProperty('SIGNING_KEY'), '')
   sign publishing.publications.mavenJava
 }
 
