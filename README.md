@@ -1,5 +1,7 @@
 # Blockmason Link SDK for Java
 
+[![Link SDK][7]][8]
+
 [![CircleCI][1]][2]
 
 Interact with your Blockmason Link projects from Java environments,
@@ -113,3 +115,5 @@ ORG_GRADLE_PROJECT_SIGNING_KEY="$(gpg --export-secret-key --armor ABCD1234)" ./g
 [4]: https://gradle.org/
 [5]: https://maven.apache.org/
 [6]: https://maven.blockmason.io/keys/4F24A818.asc
+[7]: https://blockmason.link/wp-content/uploads/2019/07/LINK-SDK.png
+[8]: https://blockmason.link/
