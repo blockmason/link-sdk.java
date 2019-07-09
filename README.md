@@ -27,7 +27,8 @@ repositories {
 
 ### Add the dependency
 
-Add the following snippet to your project's **build.gradle**:
+Add the following snippet to your project's **build.gradle**, replacing
+the version number with the one you want:
 
 ```groovy
 dependencies {
@@ -37,6 +38,11 @@ dependencies {
 
 > 💡 **Note:** If you already have a `dependencies` block (you probably
 > do), just add the `implementation` line in the above snippet to it.
+
+### Verifying published packages
+
+All Java packages published by Blockmason are signed using the PGP key
+with fingerprint [`6D5856B4C2843CF6E21358C0DEAA859A4F24A818`][6].
 
 ## Usage
 
@@ -106,3 +112,4 @@ ORG_GRADLE_PROJECT_SIGNING_KEY="$(gpg --export-secret-key --armor ABCD1234)" ./g
 [3]: https://guides.gradle.org/building-java-libraries/
 [4]: https://gradle.org/
 [5]: https://maven.apache.org/
+[6]: https://maven.blockmason.io/keys/4F24A818.asc
