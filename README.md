@@ -7,9 +7,36 @@ including Android.
 
 ## Installing
 
-To add this library to your app, do one of the following:
+These instructions assume your project is using [Gradle][4]. The same
+general steps also apply if your project uses [Maven][5].
 
-> **TODO:** List the different ways of installing the package.
+### Add the Blockmason repository
+
+Add the following snippet to your project's **build.gradle**:
+
+```groovy
+repositories {
+  maven {
+    url 'https://maven.blockmason.io'
+  }
+}
+```
+
+> 💡 **Note:** If you already have a `repositories` block, just add
+> the `maven` block in the above snippet to it.
+
+### Add the dependency
+
+Add the following snippet to your project's **build.gradle**:
+
+```groovy
+dependencies {
+  implementation 'io.blockmason:link-sdk:0.1.0'
+}
+```
+
+> 💡 **Note:** If you already have a `dependencies` block (you probably
+> do), just add the `implementation` line in the above snippet to it.
 
 ## Usage
 
@@ -77,3 +104,5 @@ ORG_GRADLE_PROJECT_SIGNING_KEY="$(gpg --export-secret-key --armor ABCD1234)" ./g
 [1]: https://circleci.com/gh/blockmason/link-sdk.java.svg?style=svg
 [2]: https://circleci.com/gh/blockmason/link-sdk.java
 [3]: https://guides.gradle.org/building-java-libraries/
+[4]: https://gradle.org/
+[5]: https://maven.apache.org/
