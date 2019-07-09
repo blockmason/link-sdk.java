@@ -17,7 +17,7 @@ Add the following snippet to your project's **build.gradle**:
 ```groovy
 repositories {
   maven {
-    url 'https://maven.blockmason.io'
+    url 'https://maven.blockmason.io/releases'
   }
 }
 ```
